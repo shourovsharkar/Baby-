@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React,{useEffect,useMemo,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {motion,AnimatePresence} from 'framer-motion';
 import {Activity,Archive,ArrowDownRight,ArrowUpRight,Bell,BookOpen,CalendarDays,Check,CheckCircle2,ChevronDown,ChevronLeft,ChevronRight,Clock,Command,Database,Ellipsis,Filter,GraduationCap,HelpCircle,LayoutDashboard,LogOut,Menu,MessageSquare,MoreHorizontal,Plus,Search,Settings,ShieldCheck,SlidersHorizontal,SquarePen,Sun,Users,Wallet, X, Trash2, Eye, FileText, UserRound, Zap, CalendarPlus, Send, PanelLeftClose, PanelLeftOpen} from 'lucide-react';
 import './style.css';
-const API='/api';
+const API='https://baby-98dq-five.vercel.app';
 async function request(path,opts={}){const token=localStorage.getItem('v13_token');const r=await fetch(API+path,{...opts,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`} :{}),...(opts.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||'Something went wrong');return data;}
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(Number(n)||0);
 const shortDate=d=>{if(!d)return 'Not published';const x=new Date(d);return x.toLocaleDateString('en-US',{month:'short',day:'2-digit'});};
